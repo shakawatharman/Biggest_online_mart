@@ -3,9 +3,9 @@ const loadProducts = () => {
   fetch(url)
     .then((response) => response.json())
     .then((data) => showProducts(data));
-    document.getElementById('all-products').innerHTML=''
+    document.getElementById('all-products').innerHTML='';
 };
-
+loadProducts();
 
 // show all product in UI 
 const showProducts = (products) => {
@@ -20,9 +20,11 @@ const showProducts = (products) => {
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
-      <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
+      <h3>Price: <span class="text-danger">$ ${product.price}</span></h3>
+      <h6>Average Ratings: ${product.rating.rate}</h6>
+      <h6>Total Reviews: ${product.rating.count}</h6>
+      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">Add to cart</button>
+      <button id="details-btn" class="btn btn-primary">Details</button></div>
       `;
     document.getElementById("all-products").appendChild(div);
   }
